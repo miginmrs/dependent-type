@@ -1,11 +1,11 @@
 {
   "name": "dependent-type",
-  "version": "0.0.1-SNAPSHOT-7",
+  "version": "0.0.1",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "sideEffects": false,
   "scripts": {
-    "prepublish": "yarn run dist",
+    "push": "yarn run dist && node inc-version.js && npm publish",
     "test:js": "echo ok",
     "dist": "yarn run dist:clean && yarn run dist:build && yarn run dist:copy",
     "dist:build": "yarn run dist:build:cjs && yarn run dist:build:esm && yarn run dist:build:bundle",
