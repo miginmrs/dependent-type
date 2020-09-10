@@ -3,6 +3,10 @@
     "declaration": true,
     "sourceMap": true
   },
+  "files": [
+    "source/index.ts",
+    "source/types.d.ts"
+  ],
   "exclude": [
     "source/**/*-spec.ts"
   ],

@@ -2,21 +2,21 @@
 
 const path = require("path");
 const webpack = require("webpack");
-const webpackRxjsExternals = require("webpack-rxjs-externals");
 
 module.exports = env => {
-  let filename = "depmap.umd.js";
+  let filename = "depmap.umd.js", devtool = {devtool: "source-map"};
   let mode = "development";
   if (env && env.production) {
     filename = "depmap.min.umd.js";
     mode = "production";
+    devtool= {};
   }
   return {
+    ...devtool,
     context: path.join(__dirname, "./"),
     entry: {
-      index: "./source/index.ts"
+      index: "./source/map.ts"
     },
-    externals: webpackRxjsExternals(),
     mode,
     module: {
       rules: [
@@ -36,10 +36,11 @@ module.exports = env => {
     },
     output: {
       filename,
-      library: "rxjsEtc",
+      library: "depmap",
       libraryTarget: "umd",
       path: path.resolve(__dirname, "./bundles")
     },
+    devtool: 'source-map',
     resolve: {
       extensions: [".ts", ".js"]
     }

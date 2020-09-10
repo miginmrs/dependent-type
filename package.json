@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
+  "source": "./source",
   "sideEffects": false,
   "scripts": {
     "push": "yarn run dist && node inc-version.js && npm publish",
@@ -10,9 +11,9 @@
     "dist": "yarn run dist:clean && yarn run dist:build && yarn run dist:copy",
     "dist:build": "yarn run dist:build:cjs && yarn run dist:build:esm && yarn run dist:build:bundle",
     "dist:build:bundle": "webpack --config webpack.config.js && webpack --config webpack.config.js --env.production",
-    "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
+    "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json && shx cp source/*.d.ts dist/cjs/",
     "dist:build:cjs:watch": "tsc -w -p tsconfig-dist-cjs.json",
-    "dist:build:esm": "tsc -p tsconfig-dist-esm.json",
+    "dist:build:esm": "tsc -p tsconfig-dist-esm.json && shx cp source/*.d.ts dist/esm/",
     "dist:clean": "rimraf dist && rimraf bundles/depmap.* && mkdirp bundles",
     "dist:copy": "cpy bundles/depmap.* dist/bundles"
   },
@@ -29,18 +30,15 @@
   "directories": {
     "lib": "lib"
   },
-  "peerDependencies": {
-    "rxjs": "^6.0.0"
-  },
   "unpkg": "./bundles/depmap.min.umd.js",
-  "description": "",
+  "description": "Dependent types for typescript",
   "devDependencies": {
     "cpy-cli": "^3.1.1",
     "rimraf": "^3.0.2",
+    "shx": "^0.3.2",
     "ts-loader": "^8.0.1",
     "typescript": "^3.9.7",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-rxjs-externals": "^2.0.0"
+    "webpack-cli": "^3.3.12"
   }
 }

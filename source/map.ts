@@ -1,4 +1,4 @@
-import { keytype, DepConstaint, AppX } from '.';
+import type { keytype, DepConstaint, AppX } from './types';
 
 export const conf: {
   Promise: {
