@@ -1,0 +1,23 @@
+{
+  "name": "dependent-type",
+  "version": "0.0.1",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "source": "./source",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miginmrs/dependent-type.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miginmrs/dependent-type/issues"
+  },
+  "homepage": "https://github.com/miginmrs/dependent-type#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "unpkg": "./bundles/depmap.min.umd.js",
+  "description": "Dependent types for typescript"
+}
